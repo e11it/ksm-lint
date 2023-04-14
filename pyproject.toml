@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "ksm-lint"
+version = "0.1.0"
+description = ""
+authors = ["e11it <im@e11it.ru>"]
+readme = "README.md"
+packages = [{include = "ksm_lint"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic = "^1.10.7"
+argparse = "^1.4.0"
+pydantic-common-models = {git = "https://github.com/e11it/pydantic-common-models.git", rev = "v1"}
+
+[tool.poetry.scripts]
+docker-lint = "ksm_lint.cli:lint_cli"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
