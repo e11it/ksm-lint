@@ -31,7 +31,7 @@ COPY pyproject.toml poetry.lock README.md ./
 # if your project is stored in src, uncomment line below
 # COPY src ./src
 # or this if your file is stored in $PROJECT_NAME, assuming `myproject`
-COPY ksm_lint ./ksm_lint
+COPY py_ksm ./py_ksm
 
 # Project initialization:
 RUN poetry config virtualenvs.in-project true && \

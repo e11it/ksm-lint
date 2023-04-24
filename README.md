@@ -7,7 +7,7 @@
 Все тесты проводились командой:
 
 ```shell
-$ docker run -it --rm -v$(pwd)/sample.csv:/tmp/sample.csv ksm-lint:latest docker-lint /tmp/sample.csv
+$ docker run -it --rm -v$(pwd)/sample.csv:/tmp/sample.csv py-ksm:latest docker-lint /tmp/sample.csv
 ```
 
 ### Недопустимый символ `*` в имени топика 
@@ -23,10 +23,10 @@ User:some-user,Topic,PREFIXED,some-topic-name-*,All,Allow,*
 <p>
 
 ```shell
-ksm_lint.cli:ERROR:Error validate model
-ksm_lint.cli:ERROR:Line 5
+py_ksm.cli:ERROR:Error validate model
+py_ksm.cli:ERROR:Line 5
 {'KafkaPrincipal': 'User:some-user', 'ResourceType': 'Topic', 'PatternType': 'PREFIXED', 'ResourceName': 'some-topic-name-*', 'Operation': 'All', 'PermissionType': 'Allow', 'Host': '*'}
-ksm_lint.cli:ERROR:Error details:
+py_ksm.cli:ERROR:Error details:
 [
   {
     "loc": [
@@ -61,10 +61,10 @@ User:some-user,Topic,PREFIXED,some-topiс-name,All,Allow,*
 <p>
 
 ```shell
-ksm_lint.cli:ERROR:Error validate model
-ksm_lint.cli:ERROR:Line 5
+py_ksm.cli:ERROR:Error validate model
+py_ksm.cli:ERROR:Line 5
 {'KafkaPrincipal': 'User:some-user', 'ResourceType': 'Topic', 'PatternType': 'PREFIXED', 'ResourceName': 'some-topiс-name', 'Operation': 'All', 'PermissionType': 'Allow', 'Host': '*'}
-ksm_lint.cli:ERROR:Error details:
+py_ksm.cli:ERROR:Error details:
 [
   {
     "loc": [
@@ -94,10 +94,10 @@ User:some-user,Group,PREFIXED,some-group-name,Write,Allow,*
 <p>
 
 ```shell
-ksm_lint.cli:ERROR:Error validate model
-ksm_lint.cli:ERROR:Line 4
+py_ksm.cli:ERROR:Error validate model
+py_ksm.cli:ERROR:Line 4
 {'KafkaPrincipal': 'User:some-user', 'ResourceType': 'Group', 'PatternType': 'PREFIXED', 'ResourceName': 'some-group-name', 'Operation': 'Write', 'PermissionType': 'Allow', 'Host': '*'}
-ksm_lint.cli:ERROR:Error details:
+py_ksm.cli:ERROR:Error details:
 [
   {
     "loc": [
@@ -118,14 +118,14 @@ ksm_lint.cli:ERROR:Error details:
 Файл `.gitlab.ci`:
 ```yaml
 .ksm-lint:
-  image: e11it/ksm-lint:v1
+  image: e11it/py-ksm:v1
   before_script:
     - cd $CI_PROJECT_DIR
     - git config --global --add safe.directory $CI_PROJECT_DIR
 
 ksm-linting:
   stage: lint
-  extends: .ksm-lint
+  extends: .py-ksm
   script:
     - >
       for file in $(git diff-tree --name-only --diff-filter=AMR --no-commit-id -r ${CI_COMMIT_SHA} | grep -E '^ksm-acl/.*\.csv'); do         
