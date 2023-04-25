@@ -30,6 +30,7 @@ class KsmAcls:
                                     Actual headers: {csv_reader.fieldnames}
                 """)))
 
+
             for idx, line in enumerate(csv_reader):
                 try:
                     line = KafkaACLCSV.from_orm(line)

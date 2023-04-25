@@ -18,7 +18,7 @@ def is_valid_file(parser, arg):
         return arg
 
 
-def lint_cli() -> ():
+def lint_cli():
     parser = argparse.ArgumentParser(
         prog='lint_cli',
         description='Lint csv file with Kafka ACL for KSM')
@@ -29,7 +29,6 @@ def lint_cli() -> ():
     try:
         KsmAcls().load(args.filename, lint_only=True)
     except LintError as e:
-        print("asdf")
         logger.error(f"{e}")
         logger.error(e.error)
         if e.detail is not None:
