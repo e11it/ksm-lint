@@ -42,5 +42,5 @@ class KsmAcls:
                                     e.json())
 
     @property
-    def acls(self):
+    def acls(self) -> list[KafkaACLCSV]:
         return self._acls
