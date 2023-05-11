@@ -134,7 +134,7 @@ pydantic = "^1.10.7"
 type = "git"
 url = "https://github.com/e11it/pydantic-common-models.git"
 reference = "v1"
-resolved_reference = "dde7e56bf3d6dc2836c5e44f54627e5d95323fb6"
+resolved_reference = "5d9fb69c62b151554ab439dc2b290465b7b1b8d7"
 
 [[package]]
 name = "pytest"
