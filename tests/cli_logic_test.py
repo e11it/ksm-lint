@@ -11,7 +11,7 @@ def test_mock_acl():
     mock_data_csv_reader = DictReader(StringIO(MOCK_DATA))
     mock_data_csv_reader.fieldnames
     for line in mock_data_csv_reader:
-        acl = KafkaACLCSV.from_orm(line)
+        acl = KafkaACLCSV.model_validate(line)
         acl.resource_type.validate_operation(acl.operation)
         result.append(acl)
 

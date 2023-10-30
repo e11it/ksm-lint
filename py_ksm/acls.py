@@ -33,7 +33,7 @@ class KsmAcls:
 
             for idx, line in enumerate(csv_reader):
                 try:
-                    line = KafkaACLCSV.from_orm(line)
+                    line = KafkaACLCSV.model_validate(line)
                     if not lint_only:
                         self._acls.append(line)
                 except ValidationError as e:

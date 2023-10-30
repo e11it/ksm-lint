@@ -8,9 +8,9 @@ packages = [{include = "py_ksm"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-pydantic = "^1.10.7"
+pydantic = "^2.4.2"
 argparse = "^1.4.0"
-pydantic-common-models = {git = "https://github.com/e11it/pydantic-common-models.git", rev = "v1"}
+pydantic-common-models = {git = "https://github.com/e11it/pydantic-common-models.git", rev = "v2"}
 
 [tool.poetry.scripts]
 docker-lint = "py_ksm.cli:lint_cli"
